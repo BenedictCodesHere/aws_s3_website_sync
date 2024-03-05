@@ -1,6 +1,7 @@
 module AwsS3WebsiteSync
   class Apply
     # path to changeset file
+      # aws session token support for STS credentials
     def self.run(
       changeset_path:,
       aws_access_key_id:,
@@ -25,6 +26,7 @@ module AwsS3WebsiteSync
 
       items_create_or_update = data.select{|t| %{create update}.include?(t["action"]) }
 
+      # aws session token support for STS credentials
       s3 = Aws::S3::Resource.new({
        region: aws_default_region,
        credentials: Aws::Credentials.new(
@@ -98,6 +100,7 @@ module AwsS3WebsiteSync
       puts "Invalidation Paths"
       puts items.inspect
 
+      # aws session token support for STS credentials
       cloudfront = Aws::CloudFront::Client.new(
        region: aws_default_region,
        credentials: Aws::Credentials.new(

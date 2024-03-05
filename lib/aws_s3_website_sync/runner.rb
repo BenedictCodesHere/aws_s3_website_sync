@@ -1,5 +1,6 @@
 module AwsS3WebsiteSync
   class Runner
+    # aws session token support for STS credentials
     def self.run(
       aws_access_key_id:,
       aws_secret_access_key:,
@@ -14,6 +15,7 @@ module AwsS3WebsiteSync
       silent:
     )
       $logger.info "Runner.run"
+      # aws session token support for STS credentials
       AwsS3WebsiteSync::Plan.run(
         output_changeset_path: output_changset_path,
         build_dir: build_dir,
@@ -38,6 +40,7 @@ module AwsS3WebsiteSync
       else
         puts "Execute the plan? Type: yes or no"
         if auto_approve == "true"
+          # aws session token support for STS credentials
           AwsS3WebsiteSync::Apply.run(
             changeset_path: output_changset_path,
             build_dir: build_dir,
@@ -53,6 +56,7 @@ module AwsS3WebsiteSync
           print "> "
           case (STDIN.gets.chomp)
           when 'yes'
+            # aws session token support for STS credentials
             AwsS3WebsiteSync::Apply.run(
               changeset_path: output_changset_path,
               build_dir: build_dir,

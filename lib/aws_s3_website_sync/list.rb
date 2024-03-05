@@ -17,7 +17,7 @@ module AwsS3WebsiteSync
       end
       paths
     end
-
+    # aws session token support for STS credentials
     def self.remote aws_access_key_id, aws_secret_access_key, aws_session_token, s3_bucket, aws_default_region
       $logger.info "List.remote"
       s3 ||= Aws::S3::Resource.new({
