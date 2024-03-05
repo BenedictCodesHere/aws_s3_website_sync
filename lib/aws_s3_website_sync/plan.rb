@@ -5,12 +5,13 @@ module AwsS3WebsiteSync
         build_dir:,
         aws_access_key_id:,
         aws_secret_access_key:,
+        aws_session_token:,
         s3_bucket:,
         aws_default_region:,
         ignore_files:
       )
       paths = AwsS3WebsiteSync::List.local build_dir
-      keys  = AwsS3WebsiteSync::List.remote aws_access_key_id, aws_secret_access_key, s3_bucket, aws_default_region
+      keys  = AwsS3WebsiteSync::List.remote aws_access_key_id, aws_secret_access_key, aws_session_token, s3_bucket, aws_default_region
 
       # Files we should delete
       diff_delete = AwsS3WebsiteSync::Plan.delete paths, keys
