@@ -5,6 +5,7 @@ module AwsS3WebsiteSync
       changeset_path:,
       aws_access_key_id:,
       aws_secret_access_key:,
+      aws_session_token:,
       s3_bucket:,
       distribution_id:,
       caller_reference:,
@@ -28,13 +29,14 @@ module AwsS3WebsiteSync
        region: aws_default_region,
        credentials: Aws::Credentials.new(
          aws_access_key_id,
-         aws_secret_access_key
+         aws_secret_access_key, 
+         aws_session_token
         )
       })
       bucket = s3.bucket s3_bucket
       AwsS3WebsiteSync::Apply.delete bucket, keys_delete
       AwsS3WebsiteSync::Apply.create_or_update bucket, items_create_or_update, build_dir
-      AwsS3WebsiteSync::Apply.invalidate aws_access_key_id, aws_secret_access_key, aws_default_region, distribution_id, caller_reference, data
+      AwsS3WebsiteSync::Apply.invalidate aws_access_key_id, aws_secret_access_key, aws_session_token, aws_default_region, distribution_id, caller_reference, data
     end
 
     def self.delete bucket, keys
@@ -85,7 +87,7 @@ module AwsS3WebsiteSync
       end
     end
 
-    def self.invalidate aws_access_key_id, aws_secret_access_key, aws_default_region, distribution_id, caller_reference, files
+    def self.invalidate aws_access_key_id, aws_secret_access_key, aws_session_token, aws_default_region, distribution_id, caller_reference, files
       $logger.info "Apply.invalidate"
       items = files.select{|t| %w{create update delete}.include?(t["action"]) }
       items.map!{|t| 
@@ -100,7 +102,8 @@ module AwsS3WebsiteSync
        region: aws_default_region,
        credentials: Aws::Credentials.new(
          aws_access_key_id,
-         aws_secret_access_key
+         aws_secret_access_key,
+         aws_session_token
         )
       )
       resp = cloudfront.create_invalidation({

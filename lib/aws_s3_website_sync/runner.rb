@@ -3,6 +3,7 @@ module AwsS3WebsiteSync
     def self.run(
       aws_access_key_id:,
       aws_secret_access_key:,
+      aws_session_token:,
       aws_default_region:,
       s3_bucket:,
       auto_approve:,
@@ -18,6 +19,7 @@ module AwsS3WebsiteSync
         build_dir: build_dir,
         aws_access_key_id: aws_access_key_id,
         aws_secret_access_key: aws_secret_access_key,
+        aws_session_token: aws_session_token,
         s3_bucket: s3_bucket,
         aws_default_region: aws_default_region,
         ignore_files: ignore_files
@@ -41,6 +43,7 @@ module AwsS3WebsiteSync
             build_dir: build_dir,
             aws_access_key_id: aws_access_key_id,
             aws_secret_access_key: aws_secret_access_key,
+            aws_session_token: aws_session_token,
             s3_bucket: s3_bucket,
             aws_default_region: aws_default_region,
             distribution_id: distribution_id,
@@ -55,6 +58,7 @@ module AwsS3WebsiteSync
               build_dir: build_dir,
               aws_access_key_id: aws_access_key_id,
               aws_secret_access_key: aws_secret_access_key,
+              aws_session_token: aws_session_token,
               s3_bucket: s3_bucket,
               aws_default_region: aws_default_region,
               distribution_id: distribution_id,

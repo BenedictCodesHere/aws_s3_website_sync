@@ -18,13 +18,14 @@ module AwsS3WebsiteSync
       paths
     end
 
-    def self.remote aws_access_key_id, aws_secret_access_key, s3_bucket, aws_default_region
+    def self.remote aws_access_key_id, aws_secret_access_key, aws_session_token, s3_bucket, aws_default_region
       $logger.info "List.remote"
       s3 ||= Aws::S3::Resource.new({
        region: aws_default_region,
        credentials: Aws::Credentials.new(
          aws_access_key_id,
-         aws_secret_access_key
+         aws_secret_access_key, 
+         aws_session_token
         )
       })
       bucket = s3.bucket s3_bucket
