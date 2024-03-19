@@ -79,11 +79,12 @@ https://rubygems.org/gems/aws_s3_website_sync
 https://github.com/teacherseat/aws-s3-website-sync
 
 The creators of this Rubygem are:
+
 Andrew Brown
-  https://github.com/omenking 
-  https://github.com/exampro-dev
+https://github.com/omenking 
+https://github.com/exampro-dev
 
 Andrew Bayko
-  https://github.com/bayko
+https://github.com/bayko
 
 My thanks go to them for creating this Rubygem, I have simply extended upon it.
