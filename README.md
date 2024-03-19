@@ -1,5 +1,3 @@
-https://rubygems.org/gems/aws_s3_website_sync
-
 ## AWS S3 Website Sync
 
 This is a tool to sync a folder from your local developer enviroment to your S3 Bucket and then invalidate the CloudFront cache.
@@ -75,3 +73,17 @@ Then to proceed to sync you just type:
 ```sh
 bundle exec rake sync
 ```
+
+## Credits
+https://rubygems.org/gems/aws_s3_website_sync
+https://github.com/teacherseat/aws-s3-website-sync
+
+The creators of this Rubygem are:
+Andrew Brown
+  https://github.com/omenking 
+  https://github.com/exampro-dev
+
+Andrew Bayko
+  https://github.com/bayko
+
+My thanks go to them for creating this Rubygem, I have simply extended upon it.
