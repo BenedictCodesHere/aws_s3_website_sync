@@ -2,6 +2,7 @@
 
 This is a tool to sync a folder from your local developer enviroment to your S3 Bucket and then invalidate the CloudFront cache.
 
+I modified the source code of the original repo developed by [omenking](https://github.com/omenking) and [bayko](https://github.com/bayko), so that the use of an `AWS Session Token` via AWS STS is supported.
 
 ## How to use
 
