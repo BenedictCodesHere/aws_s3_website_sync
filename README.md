@@ -46,7 +46,7 @@ task :sync do
     aws_session_token: ENV["AWS_SESSION_TOKEN"],
     aws_default_region:    ENV["AWS_DEFAULT_REGION"],
     s3_bucket:             ENV["S3_BUCKET"],
-    distribution_id:       ENV["CLOUDFRONT_DISTRUBTION_ID"],
+    distribution_id:       ENV["CLOUDFRONT_DISTRIBUTION_ID"],
     build_dir:             ENV["BUILD_DIR"],
     output_changset_path:  ENV["OUTPUT_CHANGESET_PATH"],
     auto_approve:          ENV["AUTO_APPROVE"],
